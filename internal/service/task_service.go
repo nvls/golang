@@ -10,6 +10,8 @@ type TaskService interface {
 	GetAll(ctx context.Context) ([]model.Task, error)
 	GetById(ctx context.Context, id string) (model.Task, error)
 	Create(ctx context.Context, task model.Task) (model.Task, error)
+	Update(ctx context.Context, task model.Task) (model.Task, error)
+	Delete(ctx context.Context, id string) (model.Task, error)
 }
 
 type taskService struct {
@@ -32,4 +34,12 @@ func (s *taskService) GetById(ctx context.Context, id string) (model.Task, error
 
 func (s *taskService) Create(ctx context.Context, task model.Task) (model.Task, error) {
 	return s.taskRepository.Create(ctx, task)
+}
+
+func (s *taskService) Update(ctx context.Context, task model.Task) (model.Task, error) {
+	return s.taskRepository.Update(ctx, task)
+}
+
+func (s *taskService) Delete(ctx context.Context, id string) (model.Task, error) {
+	return s.taskRepository.Delete(ctx, id)
 }
