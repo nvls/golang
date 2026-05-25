@@ -3,7 +3,6 @@ package handler
 import (
 	"demo09/internal/model"
 	"demo09/internal/service"
-	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -96,7 +95,6 @@ func (h *TaskHandler) Create(c *gin.Context) {
 
 	nTask, err := h.taskSercice.Create(c.Request.Context(), task)
 	if err != nil {
-		fmt.Printf("error al crear tarea: %v", err)
 		rp := resultsResponse{Results: errorResponse{Error: "error al crear tarea"}}
 		c.JSON(http.StatusBadRequest, rp)
 		return
