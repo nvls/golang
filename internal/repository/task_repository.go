@@ -36,7 +36,7 @@ func (r *taskRepository) GetAll(ctx context.Context) ([]model.Task, error) {
 	for rows.Next() {
 		var task model.Task
 		if err := rows.Scan(&task.Id, &task.Title, &task.CreatedAt, &task.ModifiedAt); err != nil {
-			return nil, fmt.Errorf("Error scanning Task: %v", err)
+			return nil, fmt.Errorf("Error scanning Task1: %v", err)
 		}
 		tasks = append(tasks, task)
 	}
